@@ -44,7 +44,7 @@ def update_user(session_token):
         return jsonify({"Message": "Datos actualizados con exito"})
     
     except Exception as ex:
-        return jsonify({"Error": f"Ha ocurrido un error inesperado, {ex}"})
+        return jsonify({"Error": f"Ha ocurrido un error inesperado, {ex}"}), 500
     
 def secure_password(user_password):
     if len(user_password) < 6:
