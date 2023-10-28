@@ -46,7 +46,7 @@ def sign_up():
         return jsonify({"Message": "Se registro al usuario con exito"}), 201
 
     except Exception as ex:
-        return jsonify({"Error", f"Ha ocurrido un error inesperado, {ex}"}), 500
+        return jsonify({"Error": f"Ha ocurrido un error inesperado, {ex}"}), 500
     
 
 def secure_password(user_password):
@@ -63,5 +63,5 @@ def secure_password(user_password):
 
 def generate_session_token():
     caracteres = string.ascii_letters = string.digits
-    token_aleatorio = "".join(random.choice(caracteres) for i in range(50))
+    token_aleatorio = "".join(random.choice(caracteres) for i in range(15))
     return token_aleatorio

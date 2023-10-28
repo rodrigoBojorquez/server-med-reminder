@@ -14,17 +14,24 @@ CREATE TABLE type_medicine(
     name_type_medicine VARCHAR(45)
 );
 
+CREATE TABLE status(
+    id_status INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name_status VARCHAR(100)
+);
+
 CREATE TABLE medicines(
 	id_medicine INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name_medicine VARCHAR(255),
+    name_medicine VARCHAR(255) NOT NULL,
     type_medicine_id INT NOT NULL,		-- llave foranea
-    dose_hour TIME NOT NULL,
-    dose_day DATE NOT NULL,
+    dose_hour TIME NOT NULL,			-- hh:mm:ss
+    dose_day DATE NOT NULL,				-- yyyy-mm-dd
     dose_quantity INT NOT NULL,
-    comments VARCHAR(1000),
-    user_id INT NOT NULL,				-- llave foranea
-    medicine_taken INT,
+    comments TEXT,
+    user_id INT NOT NULL,               -- llave foranea
+    medicine_group VARCHAR(20) NOT NULL,				
+    status_id INT NOT NULL,
     
     FOREIGN KEY (type_medicine_id) REFERENCES type_medicine(id_type_medicine),
-    FOREIGN KEY (user_id) REFERENCES users(id_user)
+    FOREIGN KEY (user_id) REFERENCES users(id_user),
+    FOREIGN KEY (status_id) REFERENCES status(id_status)
 );
