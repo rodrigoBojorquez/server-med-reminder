@@ -13,6 +13,7 @@ from blueprints.get_user_data import get_user_data_bp
 from blueprints.update_user import update_user_bp
 from blueprints.medicines.get_all_medicines import get_all_medicines_bp
 from blueprints.medicines.add_medicine import add_medicine_bp
+from blueprints.medicines.get_calendar_dia import calendar_medicines_bp
 
 
 app = Flask(__name__)
@@ -28,6 +29,7 @@ app.register_blueprint(get_user_data_bp)
 app.register_blueprint(update_user_bp)
 app.register_blueprint(get_all_medicines_bp)
 app.register_blueprint(add_medicine_bp)
+app.register_blueprint(calendar_medicines_bp)
 
 @app.route("/")
 def home():

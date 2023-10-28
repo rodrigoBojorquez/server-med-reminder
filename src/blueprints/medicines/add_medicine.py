@@ -52,5 +52,5 @@ def add_medicine(session_token):
 
 def is_empty(obj):
     for valor in obj.values():
-        if valor is None:
+        if valor is None or valor is "":
             return True
