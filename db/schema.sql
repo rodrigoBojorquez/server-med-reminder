@@ -25,7 +25,7 @@ CREATE TABLE medicines(
     type_medicine_id INT NOT NULL,		-- llave foranea
     dose_hour TIME NOT NULL,			-- hh:mm:ss
     dose_day DATE NOT NULL,				-- yyyy-mm-dd
-    dose_quantity INT NOT NULL,
+    dose_quantity VARCHAR(100) NOT NULL,
     comments TEXT,
     user_id INT NOT NULL,               -- llave foranea
     medicine_group VARCHAR(20) NOT NULL,				

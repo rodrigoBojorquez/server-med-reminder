@@ -24,4 +24,4 @@ def get_all_medicines():
         return jsonify({"Message": "Todas las medicinas", "Data": medicines})
     
     except Exception as ex:
-        return jsonify({"Error", f"Ha ocurrido un error inesperado, {ex}"}), 500
+        return jsonify({"Error": f"Ha ocurrido un error inesperado, {ex}"}), 500
