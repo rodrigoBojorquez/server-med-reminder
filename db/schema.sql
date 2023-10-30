@@ -35,3 +35,23 @@ CREATE TABLE medicines(
     FOREIGN KEY (user_id) REFERENCES users(id_user),
     FOREIGN KEY (status_id) REFERENCES status(id_status)
 );
+
+INSERT INTO type_medicine(name_type_medicine)
+VALUES
+("oral"),
+("intravenosa"),
+("intramuscular"),
+("subcutanea"),
+("topica"),
+("rectal"),
+("oftalmica"),
+("otica"),
+("nasal"),
+("inhalatoria"),
+("otro");
+
+INSERT INTO status(name_status)
+VALUES
+("atrasado"),
+("a tiempo"),
+("por tomar");
