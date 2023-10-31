@@ -19,6 +19,8 @@ from blueprints.medicines.get_taken_medicines import medicines_taken_bp
 from blueprints.medicines.get_user_medicines import get_user_medicines_bp
 from blueprints.medicines.update_group_medicines import update_group_medicines_bp
 from blueprints.medicines.get_type_medicines import get_type_medicines_bp
+from blueprints.medicines.update_medicine import update_medicine_bp
+from blueprints.medicines.delete_medicines import delete_medicine_bp
 
 
 app = Flask(__name__)
@@ -41,6 +43,8 @@ app.register_blueprint(medicines_taken_bp)
 app.register_blueprint(get_user_medicines_bp)
 app.register_blueprint(update_group_medicines_bp)
 app.register_blueprint(get_type_medicines_bp)
+app.register_blueprint(update_medicine_bp)
+app.register_blueprint(delete_medicine_bp)
 
 @app.route("/")
 def home():

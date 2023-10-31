@@ -7,7 +7,7 @@ def get_all_medicines():
     try:
         from app import mysqlconnection
         cursor = mysqlconnection.connection.cursor()
-        query = "SELECT id_medicine, name_medicine, name_type_medicine, dose_quantity, user_id, medicine_group FROM medicines INNER JOIN type_medicine ON type_medicine_id = id_type_medicine"   # editar query
+        query = "SELECT id_medicine, name_medicine, name_type_medicine, dose_quantity, user_id, medicine_group, status_id FROM medicines INNER JOIN type_medicine ON type_medicine_id = id_type_medicine"   # editar query
         cursor.execute(query)
         data = cursor.fetchall()
         medicines = []
@@ -18,7 +18,8 @@ def get_all_medicines():
                 "type_medicine": row[2],
                 "dose_quantity": row[3],
                 "user_id": row[4],
-                "medicine_group": row[5]
+                "medicine_group": row[5],
+                "status_id": row[6]
             }
             medicines.append(medicine)
         return jsonify({"Message": "Todas las medicinas", "Data": medicines})
