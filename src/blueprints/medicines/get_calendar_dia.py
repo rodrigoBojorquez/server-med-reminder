@@ -27,7 +27,8 @@ def get_medicines_for_day(session_token, dia):
                   DATE_FORMAT(medicines.dose_day, '%Y-%m-%d'),
                   medicines.dose_quantity,
                   medicines.comments,
-                  status.name_status
+                  status.name_status,
+                  medicines.medicine_group
             FROM medicines
             INNER JOIN type_medicine ON type_medicine_id = id_type_medicine
             INNER JOIN status ON status_id = id_status
@@ -48,7 +49,8 @@ def get_medicines_for_day(session_token, dia):
                 "dose_day": row[4],
                 "dose_quantity": row[5],
                 "comments": row[6],
-                "status": row[7]
+                "status": row[7],
+                "medicine_group": row[8] 
             }
             medicines_day.append(medicine)
 

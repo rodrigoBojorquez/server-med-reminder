@@ -10,21 +10,21 @@ def add_medicine(session_token):
         if (
             request.json["name_medicine"] == "" or
             request.json["type_medicine"] == "" or
-            request.json["dose_quantity"] == "" or
+            request.json["dose_quantity"] == None or
             request.json["start_day"] == "" or
             request.json["start_hour"] == "" or
-            request.json["doses_num"] == None or
+            request.json["day_doses"] == None or
             request.json["doses_interval"] == None      # or      
             # request.json["comments"] == ""
         ):
             return jsonify({"Error":"Todos los datos son obligatorios"}), 500
 
         if not (
-            isinstance(request.json.get("doses_num"), int) and
+            isinstance(request.json.get("day_doses"), int) and
             isinstance(request.json.get("doses_interval"), int) and
             isinstance(request.json.get("name_medicine"), str) and
             isinstance(request.json.get("type_medicine"), str) and
-            isinstance(request.json.get("dose_quantity"), str) and
+            isinstance(request.json.get("dose_quantity"), int) and
             isinstance(request.json.get("start_day"), str) and
             isinstance(request.json.get("start_hour"), str)
         ):
@@ -58,7 +58,7 @@ def add_medicine(session_token):
             request.json["start_hour"],
             request.json["dose_quantity"],
             request.json["comments"],
-            request.json["doses_num"],
+            request.json["day_doses"],
             request.json["doses_interval"],
             user_id
         )
@@ -72,7 +72,7 @@ def add_medicine(session_token):
                     {},
                     "{}",
                     "{}",
-                    "{}",
+                    {},
                     "{}",
                     {},
                     "{}",
@@ -94,7 +94,7 @@ def generate_medicine_group():
     medicine_group = ''.join(str(random.randint(0,9)) for _ in range(15))
     return medicine_group
     
-def medicines_generator(name_medicine, type_medicine_id, start_day, start_hour, dose_quantity, comments, doses_num, doses_interval, user_id):
+def medicines_generator(name_medicine, type_medicine_id, start_day, start_hour, dose_quantity, comments, day_doses, doses_interval, user_id):
     medicines = []
     # definiendo grupo
     group = generate_medicine_group()
@@ -103,6 +103,9 @@ def medicines_generator(name_medicine, type_medicine_id, start_day, start_hour, 
     start_day = datetime.strptime(start_day, "%Y-%m-%d")
     start_hour = datetime.strptime(start_hour, "%H:%M:%S").time()
     current_dose_time = datetime.combine(start_day, start_hour)
+
+    doses_num = day_doses * 24 // doses_interval
+
     
     for i in range(doses_num):
         # Calcular la fecha y hora de la dosis actual

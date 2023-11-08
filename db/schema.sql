@@ -25,7 +25,7 @@ CREATE TABLE medicines(
     type_medicine_id INT NOT NULL,		-- llave foranea
     dose_hour TIME NOT NULL,			-- hh:mm:ss
     dose_day DATE NOT NULL,				-- yyyy-mm-dd
-    dose_quantity VARCHAR(100) NOT NULL,
+    dose_quantity INT NOT NULL,
     comments TEXT,
     user_id INT NOT NULL,               -- llave foranea
     medicine_group VARCHAR(20) NOT NULL,				
@@ -38,20 +38,16 @@ CREATE TABLE medicines(
 
 INSERT INTO type_medicine(name_type_medicine)
 VALUES
-("oral"),
-("intravenosa"),
-("intramuscular"),
-("subcutanea"),
-("topica"),
-("rectal"),
-("oftalmica"),
-("otica"),
-("nasal"),
-("inhalatoria"),
+("pastillas"),
+("inyecciones"),
+("mililitros"),
+("gramos"),
+("gotas"),
+("supositorios"),
 ("otro");
 
 INSERT INTO status(name_status)
 VALUES
 ("atrasado"),
 ("a tiempo"),
-("por tomar");
+("por tomar");	
