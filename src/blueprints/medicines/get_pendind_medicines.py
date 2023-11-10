@@ -27,6 +27,7 @@ def get_pending_medicines(session_token):
                 TIME_FORMAT(medicines.dose_hour, '%H:%i:%s'), 
                 DATE_FORMAT(medicines.dose_day, '%Y-%m-%d'),
                 medicines.dose_quantity,
+                medicines.medicine_group,
                 medicines.comments,
                 status.name_status
             FROM medicines
@@ -48,8 +49,9 @@ def get_pending_medicines(session_token):
                 "dose_hour": row[3],
                 "dose_day": row[4],
                 "dose_quantity": row[5],
-                "comments": row[6],
-                "status": row[7]
+                "medicine_group": row[6],
+                "comments": row[7],
+                "status": row[8]
             }
             medicines.append(medicine)
 
